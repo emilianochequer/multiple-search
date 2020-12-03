@@ -19,7 +19,7 @@ export const fetchGoogleSearch = (search) => {
     params.append("key", GOOGLE_KEY);
     params.append("cx", PROJECT_ENGINE);
     params.append("q", search);
-    axios
+    return axios
       .get(`${BASE_URL}?${params}`)
       .then((res) => res.data)
       .then((data) => {
