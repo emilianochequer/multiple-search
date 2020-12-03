@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 
 import Submit from "./index";
 
-describe("App", () => {
+describe("Submit", () => {
   beforeAll(() => {
     Object.defineProperty(window, "matchMedia", {
       writable: true,
@@ -19,11 +19,11 @@ describe("App", () => {
 
   afterEach(() => jest.resetAllMocks());
 
-  test("renders App component", () => {
+  test("renders Submit component", () => {
     render(
       <Submit />
     );
 
-    screen.debug();
+    expect(screen.getAllByText('Search')).toBeTruthy();
   });
 });

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 function DropdowSearch({ onChange, searchTypesKeys, loading, searchType }) {
   return (
     <Form.Item>
-      <Select defaultValue={searchType} disabled={loading} onChange={onChange}>
+      <Select name="select" defaultValue={searchType} disabled={loading} onChange={onChange}>
         {searchTypesKeys.map((type, id) => (
           <Select.Option key={id} value={type}>
             {type.toUpperCase()}

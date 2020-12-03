@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 import SearchTextBox from "./index";
 
@@ -20,14 +20,21 @@ describe("App", () => {
   afterEach(() => jest.resetAllMocks());
 
   test("renders App component", () => {
+    const onChange = jest.fn();
+
     render(
       <SearchTextBox
         loading={false}
-        search={""}
-        setSearch={() => {}}
+        search={"GOOGLE"}
+        setSearch={onChange}
       />
     );
 
-    screen.debug();
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: 'BING' },
+    });
+ 
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
+
 });

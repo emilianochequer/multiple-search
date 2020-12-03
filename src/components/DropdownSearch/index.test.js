@@ -1,7 +1,26 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 import DropdownSearch from "./index";
+
+jest.mock("antd", () => {
+  const antd = jest.requireActual("antd");
+
+  const Select = ({ children, onChange }) => {
+    return (
+      <select onChange={(e) => onChange(e.target.value)}>{children}</select>
+    );
+  };
+
+  Select.Option = ({ children, ...otherProps }) => {
+    return <option {...otherProps}>{children}</option>;
+  };
+
+  return {
+    ...antd,
+    Select,
+  };
+});
 
 describe("App", () => {
   beforeAll(() => {
@@ -19,16 +38,24 @@ describe("App", () => {
 
   afterEach(() => jest.resetAllMocks());
 
-  test("renders App component", () => {
-    render(
+  test("renders DropdownSearch component", async () => {
+    const onChange = jest.fn();
+
+    const { getByRole, getAllByRole } = render(
       <DropdownSearch
-        onChange={() => {}}
+        onChange={onChange}
         searchTypesKeys={["GOOGLE", "BING", "BOTH"]}
         loading={false}
         searchType={"GOOGLE"}
       />
     );
 
-    screen.debug();
+    const controlElement = getByRole("combobox");
+
+    fireEvent.click(controlElement);
+
+    const menuOptions = getAllByRole("option");
+
+    expect(menuOptions).toHaveLength(3);
   });
 });
