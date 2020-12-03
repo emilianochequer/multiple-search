@@ -13,7 +13,7 @@ function ListResults({ data }) {
           renderItem={(item) => (
             <List.Item>
               <List.Item.Meta
-                title={<a href={item.link}>{item.title}</a>}
+                title={<a href={item.link} rel="noreferrer" target="_blank">{item.title}</a>}
                 description={item.snippet}
               />
             </List.Item>
