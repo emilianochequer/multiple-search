@@ -1,3 +1,11 @@
+
+## Information
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).<br />
+This is a quick simple react project using [Ant Design](https://ant.design/) for layout.<br />
+This project use Promises and Async-Await  to show the both ways to fetch using axios and fetch
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
