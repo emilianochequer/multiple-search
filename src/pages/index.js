@@ -12,7 +12,8 @@ function SearchBox() {
   const searchTypesKeys = searchTypes && Object.keys(searchTypes);
   const [searchType, setSearchType] = useState(searchTypesKeys[0]);
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.googleReducer);
+  const  loadingGoogle = useSelector((state) => state.googleReducer);
+  const  loadingBing = useSelector((state) => state.bingReducer);
 
   const googleSelector = useSelector((state) => state.googleReducer.searchData);
   const bingSelector = useSelector((state) => state.bingReducer.searchData);
@@ -37,6 +38,8 @@ function SearchBox() {
   };
 
   const handleEnter = (e) => (e.keyCode === 13 ? handleSubmit(e) : null);
+
+  const loading = loadingGoogle.loading || loadingBing.loading;
 
   const searchFormProps = {
     handleSubmit,

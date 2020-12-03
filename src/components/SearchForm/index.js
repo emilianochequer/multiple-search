@@ -19,11 +19,12 @@ function SearchForm({
   return (
     <Content style={{ padding: "0 50px" }}>
       <div style={{ minHeight: 240, padding: 24,background: '#fff', display: 'flex'}}>
-        <Form onFinish={(e) => handleSubmit(e)} onKeyPress={handleEnter}>
+        <Form onFinish={(e) => handleSubmit(e)}>
           <SearchTextBox
             loading={loading}
             search={search}
             setSearch={setSearch}
+            onKeyPress={handleEnter}
           />
           <DropdownSearch
             loading={loading}
