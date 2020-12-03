@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
-import ListResults from "./index";
+import Submit from "./index";
 
 describe("App", () => {
   beforeAll(() => {
@@ -11,16 +11,18 @@ describe("App", () => {
         return {
           matches: false,
           addListener: () => {},
-          removeListener: () => {}
+          removeListener: () => {},
         };
-      }
+      },
     });
   });
 
-  afterEach(() => jest.resetAllMocks())
+  afterEach(() => jest.resetAllMocks());
 
   test("renders App component", () => {
-    render(<ListResults data={[]} />);
+    render(
+      <Submit />
+    );
 
     screen.debug();
   });
